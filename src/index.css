@@ -16,15 +16,15 @@ code {
   position: relative;
 }
 
+#option-tag {
+  margin: 50px;
+}
+
 .buttons {
   position: relative;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 150px;
   top: 50vh;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-#hover {
-  margin: auto;
 }

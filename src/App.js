@@ -6,16 +6,47 @@ class App extends React.Component {
     super();
 
     this.state = {
-      onButton: false,
+      isHover: false,
+      showTopTip: true,
     };
   }
 
-  handlMousehover = () => {
-    console.log("hovering on button");
+  handlMouseEnter = () => {
+    this.setState(
+      {
+        isHover: true, // hover state changing
+      },
+      () => console.log("hovering on button", this.state.isHover)
+    );
+  };
+
+  handlMouseLeave = () => {
+    this.setState(
+      {
+        isHover: false, // hover state changing
+      },
+      () => console.log("hovering on button", this.state.isHover)
+    );
+  };
+
+  handleOptionChange = () => {
+    this.setState(
+      {
+        showTopTip: !this.state.showTopTip,
+      },
+      () => console.log("show top tooltip", this.state.showTopTip)
+    );
   };
 
   render() {
-    return <Tooltip onMouseHover={this.handlMousehover} />;
+    return (
+      <Tooltip
+        onMouseIn={this.handlMouseEnter}
+        onMouseOut={this.handlMouseLeave}
+        onChangeOption={this.handleOptionChange}
+        state={this.state}
+      />
+    );
   }
 }
 

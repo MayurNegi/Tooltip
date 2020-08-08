@@ -4,12 +4,26 @@ import "./index.css";
 const Tooltip = (props) => {
   return (
     <div className="main">
+      <div id="option-tag">
+        <select onChange={props.onChangeOption}>
+          <option value="true">Top</option>
+          <option value="false">Bottom</option>
+        </select>
+      </div>
       <div className="buttons">
-        <div id="top-hover"> here is a tip </div>
-        <button id="press" onMouseEnter={props.onMouseHover}>
+        {props.state.isHover && props.state.showTopTip && (
+          <div style={{ margin: 0 }}>Here is a tip</div>
+        )}
+        <button
+          id="press"
+          onMouseEnter={props.onMouseIn}
+          onMouseLeave={props.onMouseOut}
+        >
           Hover
         </button>
-        {/* <div id="bottom-hover"> here is a tip </div> */}
+        {props.state.isHover && !props.state.showTopTip && (
+          <div style={{ margin: 0 }}>Here is a tip</div>
+        )}
       </div>
     </div>
   );
