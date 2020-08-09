@@ -7,7 +7,7 @@ class App extends React.Component {
 
     this.state = {
       isHover: false,
-      showTopTip: true,
+      selectPos: "top",
     };
   }
 
@@ -29,12 +29,12 @@ class App extends React.Component {
     );
   };
 
-  handleOptionChange = () => {
+  handleOptionChange = (e) => {
     this.setState(
       {
-        showTopTip: !this.state.showTopTip,
+        selectPos: e.target.value,
       },
-      () => console.log("show top tooltip", this.state.showTopTip)
+      () => console.log("show top tooltip", this.state.selectPos)
     );
   };
 

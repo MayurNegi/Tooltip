@@ -5,25 +5,48 @@ const Tooltip = (props) => {
   return (
     <div className="main">
       <div id="option-tag">
+        <h2>Select position for tooltip information:</h2>
         <select onChange={props.onChangeOption}>
-          <option value="true">Top</option>
-          <option value="false">Bottom</option>
+          <option value="top">Top</option>
+          <option value="left">Left</option>
+          <option value="bottom">Bottom</option>
+          <option value="right">Right</option>
         </select>
       </div>
       <div className="buttons">
-        {props.state.isHover && props.state.showTopTip && (
-          <div style={{ margin: 0 }}>Here is a tip</div>
-        )}
+        {/* for top position */}
+        <div id="tooltip-psoition">
+          {props.state.isHover && props.state.selectPos === "top" && (
+            <div className="position" id="top-pos">
+              <div>The tooltip is at {props.state.selectPos} position. </div>
+            </div>
+          )}
+          {/* for left position */}
+          {props.state.isHover && props.state.selectPos === "left" && (
+            <div className="position" id="left-pos">
+              <div>The tooltip is at {props.state.selectPos} position.</div>
+            </div>
+          )}
+          {/* for bottom position */}
+          {props.state.isHover && props.state.selectPos === "bottom" && (
+            <div className="position" id="bottom-pos">
+              <div>The tooltip is at {props.state.selectPos} position. </div>
+            </div>
+          )}
+          {/* for right position */}
+          {props.state.isHover && props.state.selectPos === "right" && (
+            <div className="position" id="right-pos">
+              <div>The tooltip is at {props.state.selectPos} position. </div>
+            </div>
+          )}
+        </div>
         <button
           id="press"
           onMouseEnter={props.onMouseIn}
           onMouseLeave={props.onMouseOut}
         >
-          Hover
+          Press
         </button>
-        {props.state.isHover && !props.state.showTopTip && (
-          <div style={{ margin: 0 }}>Here is a tip</div>
-        )}
       </div>
     </div>
   );
